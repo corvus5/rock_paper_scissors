@@ -1,0 +1,1 @@
+This is a project to test beginning JavaScript skills. I will create a console-based game to play rock, paper, scissors against the computer. 
