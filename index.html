@@ -6,8 +6,8 @@
     <body>
       <script>
 
-        let playerScore = 0
-        let computerScore = 0
+            let computerScore = 0;
+            let playerScore = 0;
 
           function computerPlay(choices) {
               choices = ['rock', 'paper', 'scissors']
@@ -15,77 +15,113 @@
               return computer_choice
           }
 
-          function playRound (playerSelection, computerSelection) {
-                    
-              //First statement is for player chooses Rock
+          function playRound (x, y) {
+
+            let userInput = prompt('Rock, paper, or scissors: ');
+
+            let playerSelection = userInput.toLowerCase();
+            let computerSelection = computerPlay();
+            
+            
+            let winStr = 'You win!';
+            let loseStr = 'You lose!';
+            let rockPaper = 'Paper beats Rock!';
+            let scissorsRock = 'Rock beats Scissors!';
+            let paperScissors = 'Scissors beats Paper!';
+
+            let winRock = winStr + ' ' + scissorsRock;
+            let loseRock = loseStr + ' ' + rockPaper;
+            let winPaper = winStr + ' ' + rockPaper;
+            let losePaper = loseStr + ' ' + paperScissors;
+            let winScissors = winStr + ' ' + paperScissors;
+            let loseScissors = loseStr + ' ' + scissorsRock;
+            let playerTie = 'You tied. You both chose ' + computerSelection; 
+
+            
+            let result
+
+            //let lose = ++computerScore
+            //let win = ++playerScore
+            //let tie 
+            //let result = 'Player score: ' + playerScore + 'Computer score: ' + computerScore
+
+                //First statement is for player chooses Rock
                 if (playerSelection == computerSelection) {
-                    return playerTie + playerSelection + '.'
+                    console.log(playerTie)
+                    result = 'Player score: ' + playerScore + ' Computer score: ' + computerScore
+                    return result;
                     }
 
                 else if (playerSelection == 'rock') {
                     if (computerSelection == 'paper') {
-                        return lose + ' ' + rockPaper
+                        computerScore++
+                        console.log(loseRock)
+                        result = 'Player score: ' + playerScore + ' Computer score: ' + computerScore
+                        return result;
+                        
                     } else {
-                        return win + ' ' + scissorsRock
+                        playerScore++
+                        console.log(winRock)
+                        result = 'Player score: ' + playerScore + ' Computer score: ' + computerScore
+                        return result;
                     }
                 }
                 else if (playerSelection == 'paper') {
                     if (computerSelection == 'scissors') {
-                        return lose + ' ' + paperScissors
+                        computerScore++
+                        console.log(losePaper)
+                        result = 'Player score: ' + playerScore + ' Computer score: ' + computerScore
+                        return result;
                     } else {
-                        return win + ' ' + rockPaper
+                        playerScore++
+                        console.log(winPaper)
+                        result = 'Player score: ' + playerScore + ' Computer score: ' + computerScore
+                        return result;
                     }
                 }
                 
                 else if (playerSelection == 'scissors') {
                     if (computerSelection == 'rock') {
-                        return lose + ' ' + scissorsRock
+                        computerScore++
+                        console.log(loseScissors)
+                        result = 'Player score: ' + playerScore + ' Computer score: ' + computerScore
+                        return result;
                     } else {
-                        return win + ' ' + paperScissors
+                        playerScore++
+                        console.log(winScissors)
+                        result = 'Player score: ' + playerScore + ' Computer score: ' + computerScore
+                        return result;
                     }
+                    
     
                 }
-                
-
-
           }
+          
+          //let currentScore = 'Your score: ' + playerScore + ' Computer score: ' + computerScore;
 
-          function game() {
-              playRound(playerSelection, computerSelection)
+          
 
-              playRound(playerSelection, computerSelection)
-              playRound(playerSelection, computerSelection)
-              playRound(playerSelection, computerSelection)
-              playRound(playerSelection, computerSelection)
-              
-          }
+          //console.log(playRound(playerSelection, computerSelection));
         
-          function score(playerScore, computerScore) {
-              return currentScore
-          }
+        function game() {
+            
+            for (let i = 0; i < 5; i++) {
+            console.log(playRound());
+            }
+            if (playerScore > computerScore) {
+                console.log('You win!')
+            } 
+            else if (playerScore < computerScore) {
+                console.log('You lose!')
+            }
+            else {
+                console.log('You tied the computer.')
+            }
 
-          let win = 'You win!';
-          let lose = 'You lose!';
-          let rockPaper = 'Paper beats Rock!';
-          let scissorsRock = 'Rock beats Scissors!';
-          let paperScissors = 'Scissors beats Paper!';
-
-          let winRock = win + ' ' + scissorsRock;
-          let loseRock = lose + ' ' + rockPaper;
-          let winPaper = win + ' ' + rockPaper;
-          let losePaper = lose + ' ' + paperScissors;
-          let winScissors = win + ' ' + paperScissors;
-          let loseScissors = lose + ' ' + scissorsRock;
-          let playerTie = 'You tied. You both chose '; 
-          let currentScore = 'Your score: ' + playerScore + ' Computer score: ' + computerScore;
-
-          let userInput = prompt('Rock, paper, or scissors: ');
-
-          const playerSelection = userInput.toLowerCase();
-          const computerSelection = computerPlay();
-
-        console.log(playRound(playerSelection, computerSelection))
+            
+        }
          
+         game();
             
           
       </script>  
